@@ -1,9 +1,9 @@
 import logo from './logo.svg';
-import './App.css';
+import styles from './SearchBar/SearchBar.module.css';
 
 function SearchBar() {
   return (
-    <div className="">
+    <div className={styles.container}>
       <form>
         <input 
         type="text"
