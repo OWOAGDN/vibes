@@ -1,12 +1,17 @@
 import styles from './Tracklist/Tracklist.module.css';
 
-function Track() {
+function Track( {track} ) {
+
+
   return (
     <li>
-        <div>Track</div>
-        <button>X</button>
+        <div>
+          <p>Song: {track.name}</p>
+          <p>Artist: {track.artist}</p>
+        </div>
+        <button>+</button>
     </li>
   );
 }
 
-export default Tracklist;
+export default Track;
