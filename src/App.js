@@ -1,10 +1,32 @@
 import './App.css';
+import React, { useState } from 'react'
 import SearchBar from './SearchBar/SearchBar';
 import Playlist from './Playlist/Playlist';
 import SearchResults from './SearchResults/SearchResults';
 import Tracklist from './Tracklist/Tracklist';
 
 function App() {
+  const [result, setResult] = useState([
+    {
+      name: "On & On",
+      artist: "Flo",
+      album: "Access All Areas",
+      id: 0
+    },
+    {
+      name: "Walk Like This",
+      artist: "Flo",
+      album: "Access All Areas",
+      id: 1
+    },
+    {
+      name: "I'm Just a Girl",
+      artist: "Flo",
+      album: "Access All Areas",
+      id: 2
+    }
+  ]);
+  
   return (
     <div className="App">
       <header className="">
@@ -13,7 +35,7 @@ function App() {
       <main>
         <SearchBar />
         <div className="PlayArea">
-          <SearchResults />
+          <SearchResults result={result} />
           <div className="ListArea">
           <Playlist />
           <Tracklist />
