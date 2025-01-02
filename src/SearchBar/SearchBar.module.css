@@ -1,4 +1,14 @@
 .container {
     padding: 20px;
-    
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    text-transform: capitalize;
+    justify-content: center;
+}
+
+.form input {
+    margin: 10px;
 }

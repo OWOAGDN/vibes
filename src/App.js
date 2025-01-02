@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import SearchBar from './SearchBar/SearchBar.js'
+import Main from './Main/Main.js';
 
 function App() {
   return (
@@ -19,8 +20,10 @@ function App() {
         >
           Learn React
         </a>
+        <h1>R&B Vibes</h1>
       </header>
       <SearchBar />
+      <Main />
     </div>
   );
 }

@@ -3,10 +3,10 @@ import styles from './SearchBar.module.css';
 function SearchBar() {
   return (
     <div className={styles.container}>
-      <form>
+      <form className={styles.form}>
         <input 
         type="text"
-        placeholder="Search"
+        placeholder="Find Some Riddims"
         key="search"
         />
         <img src=""></img>
