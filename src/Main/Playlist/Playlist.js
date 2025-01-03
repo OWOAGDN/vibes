@@ -1,7 +1,12 @@
 function Playlist() {
     return (
         <div>
-            <h1>Hello</h1>
+            <div>
+                <h1>Songs Here</h1>
+            </div>
+            <div>
+                <button>Save to Spotify</button>
+            </div>
         </div>
     );
 }
