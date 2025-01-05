@@ -1,11 +1,15 @@
-function Track( {track}) {
+function Track( {track, addPlaylistSongs}) {
+
+  const handleClick = () => {
+    addPlaylistSongs(track)
+  }
     return (
     <li>
         <div>
           <p>Song: {track.name}</p>
           <p>Artist: {track.artist}</p>
         </div>
-        <button>+</button>
+        <button onClick={handleClick}>+</button>
     </li>
     );
 }

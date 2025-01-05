@@ -1,6 +1,6 @@
 .main {
     border: 1px solid black;
-    width: 50%;
+    min-width: 40%;
 }
 
 .songs {

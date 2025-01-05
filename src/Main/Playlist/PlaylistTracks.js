@@ -1,5 +1,11 @@
 function PlaylistTracks() {
     return (
-        <div></div>
+        <div>
+            <div>
+                Songs Here
+            </div>
+        </div>
     );
 }
+
+export default PlaylistTracks;

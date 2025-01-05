@@ -24,13 +24,16 @@ function Main( {tracks}) {
           id: 2
         }
       ]);
+    
+    const [playlistSongs, setPlaylistSongs] = useState([]);
 
-
-
+    const addPlaylistSongs = (song) => {
+        setPlaylistSongs((prev) => [...prev, song]);
+    }
     return (
         <div className={styles.main}>
-            <Tracklist tracks={results} />
-            <Playlist />
+            <Tracklist tracks={results} addPlaylistSongs={addPlaylistSongs} />
+            <Playlist playlistSongs={playlistSongs} />
         </div>
     );
 }

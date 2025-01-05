@@ -2,4 +2,10 @@
     display: flex;
     background-color: aqua;
     width: 100%;
+    justify-content: space-around;
+}
+
+.playlist {
+    border: 1px solid black;
+    min-width: 40%;
 }
