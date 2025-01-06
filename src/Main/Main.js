@@ -1,5 +1,6 @@
 import Tracklist from "./Tracklist/Tracklist";
 import Playlist from "./Playlist/Playlist";
+import DisplayPlaylist from "./DisplayPlaylist";
 import styles from "./Main.module.css"
 import { useState } from 'react';
 
@@ -30,14 +31,28 @@ function Main( {tracks}) {
     ]);
 
     const addPlaylistSongs = (song) => {
-      setPlaylistSongs((prev) => [...prev, song]);
-    }
+      const duplicateCheck = playlistSongs.filter(s => s.id === song.id);
+      if (duplicateCheck.length === 0) {
+        setPlaylistSongs((prev) => [...prev, song]);
+      } 
+    };
+
+    const deletePlaylistSong = (songId) => {
+      setPlaylistSongs((playlistSongs) => playlistSongs.filter(song => song.id !== songId));
+    };
 
     return (
+      <>
         <div className={styles.main}>
             <Tracklist tracks={results} addPlaylistSongs={addPlaylistSongs} />
-            <Playlist playlistSongs={playlistSongs} />
+            <Playlist playlistSongs={playlistSongs} deletePlaylistSong={deletePlaylistSong} />
+            {}
         </div>
+        <div>
+          <DisplayPlaylist />
+        </div>
+      </>
+
     );
 }
 

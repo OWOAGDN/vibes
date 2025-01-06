@@ -2,7 +2,7 @@ import PlaylistTracks from "./PlaylistTracks";
 import styles from "../Main.module.css"
 import Track from "../Tracklist/Track";
 
-function Playlist( {playlistSongs} ) {
+function Playlist( {playlistSongs, deletePlaylistSong} ) {
     return (
         <div className={styles.playlist}>
             <div>
@@ -15,6 +15,7 @@ function Playlist( {playlistSongs} ) {
                         <Track 
                             key={track.id} 
                             track={track}
+                            deletePlaylistSong={deletePlaylistSong}
                             type='playlist' />
                     )))}
                     </ul>

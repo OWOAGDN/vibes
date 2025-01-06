@@ -1,7 +1,10 @@
-function Track( {track, addPlaylistSongs, type}) {
+function Track( {track, addPlaylistSongs, type, deletePlaylistSong}) {
 
-  const handleClick = () => {
+  const addSong = () => {
     addPlaylistSongs(track)
+  }
+  const deleteSong = () => {
+    deletePlaylistSong(track.id)
   }
     return (
     <li>
@@ -9,7 +12,7 @@ function Track( {track, addPlaylistSongs, type}) {
           <p>Song: {track.name}</p>
           <p>Artist: {track.artist}</p>
         </div>
-        {type === 'result' ? <button onClick={handleClick}>+</button> : '' } 
+        {type === 'result' ? <button onClick={addSong}>+</button> : <button onClick={deleteSong}>-</button> } 
     </li>
     );
 }
