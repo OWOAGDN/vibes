@@ -1,11 +1,14 @@
 import PlaylistTracks from "./PlaylistTracks";
 import styles from "../Main.module.css"
 
-function Playlist() {
+function Playlist( {playlistSongs} ) {
     return (
         <div className={styles.playlist}>
             <div>
-                <h1>Songs Here</h1>
+                <h1>Create Playlist</h1>
+            </div>
+            <div>
+                <p>{playlistSongs.length === 0 ? '' : playlistSongs[0].name}</p>
             </div>
             <div>
                 <form>

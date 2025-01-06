@@ -25,11 +25,14 @@ function Main( {tracks}) {
         }
       ]);
     
-    const [playlistSongs, setPlaylistSongs] = useState([]);
+    const [playlistSongs, setPlaylistSongs] = useState([
+
+    ]);
 
     const addPlaylistSongs = (song) => {
-        setPlaylistSongs((prev) => [...prev, song]);
+      setPlaylistSongs((prev) => [...prev, song]);
     }
+
     return (
         <div className={styles.main}>
             <Tracklist tracks={results} addPlaylistSongs={addPlaylistSongs} />
