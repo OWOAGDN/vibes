@@ -1,6 +1,7 @@
 function Track( {track, addPlaylistSongs, type, deletePlaylistSong}) {
 
   const addSong = () => {
+    track.uri = 1;
     addPlaylistSongs(track)
   }
   const deleteSong = () => {
