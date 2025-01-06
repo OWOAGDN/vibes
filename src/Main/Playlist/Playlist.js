@@ -1,5 +1,6 @@
 import PlaylistTracks from "./PlaylistTracks";
 import styles from "../Main.module.css"
+import Track from "../Tracklist/Track";
 
 function Playlist( {playlistSongs} ) {
     return (
@@ -8,7 +9,15 @@ function Playlist( {playlistSongs} ) {
                 <h1>Create Playlist</h1>
             </div>
             <div>
-                <p>{playlistSongs.length === 0 ? '' : playlistSongs[0].name}</p>
+                <ul>
+                {playlistSongs.length === 0 ? ('') : (
+                    playlistSongs.map(track => (
+                        <Track 
+                            key={track.id} 
+                            track={track}
+                            type='playlist' />
+                    )))}
+                    </ul>
             </div>
             <div>
                 <form>

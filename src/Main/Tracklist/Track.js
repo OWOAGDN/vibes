@@ -1,4 +1,4 @@
-function Track( {track, addPlaylistSongs}) {
+function Track( {track, addPlaylistSongs, type}) {
 
   const handleClick = () => {
     addPlaylistSongs(track)
@@ -9,7 +9,7 @@ function Track( {track, addPlaylistSongs}) {
           <p>Song: {track.name}</p>
           <p>Artist: {track.artist}</p>
         </div>
-        <button onClick={handleClick}>+</button>
+        {type === 'result' ? <button onClick={handleClick}>+</button> : '' } 
     </li>
     );
 }

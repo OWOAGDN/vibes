@@ -8,8 +8,10 @@ function Tracklist( {tracks, addPlaylistSongs} ) {
             <ul className={styles.songs} >
             {tracks.map(track => (
             <Track 
-                key={track.id} track={track} 
-                addPlaylistSongs={addPlaylistSongs} />
+                key={track.id} 
+                track={track} 
+                addPlaylistSongs={addPlaylistSongs}
+                type='result' />
         ))}
             </ul>
         
