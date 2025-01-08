@@ -3,15 +3,18 @@ import styles from "../Main.module.css"
 import Track from "../Tracklist/Track";
 import { useState } from "react";
 
-function Playlist( {playlistSongs, deletePlaylistSong, addPlaylist} ) {
+function Playlist( {playlistSongs, deletePlaylistSong, addPlaylist, resetPlaylist} ) {
 
     const [playlistName, setPlaylistName] = useState('');
     const handleChange = ({target}) => {
         const value = target.value;
-        setPlaylistName(() => value)
+        setPlaylistName(() => value);
     }
+
     const handleSubmit = (event) => {
-        event.preventDefault()
+        event.preventDefault();
+        resetPlaylist();
+        setPlaylistName(() => '');
     }
 
 

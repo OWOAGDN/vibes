@@ -28,7 +28,6 @@ function Main( {tracks}) {
     
     const [playlists, setPlaylists] = useState([]);
     const [playlistSongs, setPlaylistSongs] = useState([]);
-    
 
     const addPlaylistSongs = (song) => {
       const duplicateCheck = playlistSongs.filter(s => s.id === song.id);
@@ -48,6 +47,12 @@ function Main( {tracks}) {
       }
     }
 
+    const resetPlaylist = () => {
+      const forSpotify = playlistSongs.map(song => song.uri);
+      setPlaylistSongs(() => []);
+    }
+    
+
     return (
       <>
         <div className={styles.main}>
@@ -58,7 +63,8 @@ function Main( {tracks}) {
               playlistSongs={playlistSongs} 
               deletePlaylistSong={deletePlaylistSong} 
               playlists={playlists}
-              addPlaylist={addPlaylist} />
+              addPlaylist={addPlaylist}
+              resetPlaylist={resetPlaylist} />
         </div>
         <div>
           <DisplayPlaylist />
