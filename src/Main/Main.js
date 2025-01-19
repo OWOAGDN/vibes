@@ -2,7 +2,7 @@ import Tracklist from "./Tracklist/Tracklist";
 import Playlist from "./Playlist/Playlist";
 import DisplayPlaylist from "./DisplayPlaylist";
 import styles from "./Main.module.css"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Main( {tracks}) {
     const [results, setResults] = useState([
@@ -25,15 +25,15 @@ function Main( {tracks}) {
           id: 2
         }
       ]);
-    
     const [playlists, setPlaylists] = useState([]);
     const [playlistSongs, setPlaylistSongs] = useState([]);
+    
 
     const addPlaylistSongs = (song) => {
       const duplicateCheck = playlistSongs.filter(s => s.id === song.id);
       if (duplicateCheck.length === 0) {
         setPlaylistSongs((prev) => [...prev, song]);
-      } 
+      }
     };
 
     const deletePlaylistSong = (songId) => {
@@ -50,8 +50,7 @@ function Main( {tracks}) {
     const resetPlaylist = () => {
       const forSpotify = playlistSongs.map(song => song.uri);
       setPlaylistSongs(() => []);
-    }
-    
+    }    
 
     return (
       <>
