@@ -42,12 +42,45 @@ function App() {
         setAccessToken(() => '');
       }, params.expires_in *1000);
     }
-  }, [])
+  }, [accessToken])
 
   const spotifyLogin = () => {
     if(!accessToken) {
       getAuthorization();
     }
+  }
+
+  const getResults = (term) => {
+    return fetch(`https://api.spotify.com/v1/search?q=${term}&type=track`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    }).then(response => {
+      return response.json();
+    }).then(jsonResponse => {
+      if (!jsonResponse) {
+        console.log('nothing')
+      } else {
+        console.log(jsonResponse)
+        return jsonResponse.tracks.items.map(track => ({
+          id: track.id,
+          name: track.name,
+          artist: track.artists[0].name,
+          album: track.album.name,
+          uri: track.uri
+        }));
+      };
+    });
+  }
+
+  const [results, setResults] = useState([])
+/*
+  const showResults = (term) => {
+    getResults(term).then(result => setResults(result))
+  } */
+
+  const showResults = (term) => {
+    getResults(term).then(setResults);
   }
 
   return (
@@ -56,8 +89,8 @@ function App() {
         <h1>R&B Vibes</h1>
       </header>
       <SpotifyLogin spotifyLogin={spotifyLogin} token={accessToken} />
-      <SearchBar />
-      <Main />
+      <SearchBar showResults={showResults} />
+      <Main results={results} />
     </div>
   );
 }

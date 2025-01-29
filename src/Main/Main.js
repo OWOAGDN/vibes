@@ -4,27 +4,8 @@ import DisplayPlaylist from "./DisplayPlaylist";
 import styles from "./Main.module.css"
 import { useEffect, useState } from 'react';
 
-function Main( {tracks}) {
-    const [results, setResults] = useState([
-        {
-          name: "On & On",
-          artist: "Flo",
-          album: "Access All Areas",
-          id: 0
-        },
-        {
-          name: "Walk Like This",
-          artist: "Flo",
-          album: "Access All Areas",
-          id: 1
-        },
-        {
-          name: "I'm Just a Girl",
-          artist: "Flo",
-          album: "Access All Areas",
-          id: 2
-        }
-      ]);
+function Main( {results}) {
+
     const [playlists, setPlaylists] = useState([]);
     const [playlistSongs, setPlaylistSongs] = useState([]);
     
