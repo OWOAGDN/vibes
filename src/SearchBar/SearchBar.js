@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './SearchBar.module.css';
 
 function SearchBar( {showResults} ) {
-  const [term, setTerm] = useState()
+  const [term, setTerm] = useState('')
   const handleTextChange = (event) => {
     setTerm(() => event.target.value)
   }

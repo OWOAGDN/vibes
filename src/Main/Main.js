@@ -2,11 +2,10 @@ import Tracklist from "./Tracklist/Tracklist";
 import Playlist from "./Playlist/Playlist";
 import DisplayPlaylist from "./DisplayPlaylist";
 import styles from "./Main.module.css"
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function Main( {results}) {
 
-    const [playlists, setPlaylists] = useState([]);
     const [playlistSongs, setPlaylistSongs] = useState([]);
     
 
@@ -21,15 +20,14 @@ function Main( {results}) {
       setPlaylistSongs((playlistSongs) => playlistSongs.filter(song => song.id !== songId));
     };
 
-    const addPlaylist = (playlist) => {
-      const duplicateCheck = playlists.filter(p => p.id === playlist.id);
-      if (duplicateCheck.length === 0) {
-        setPlaylists((prev) => [...prev, playlist]);
-      }
+    const addPlaylist = (name) => {
+      let playlistName = name;
+      console.log(playlistName)
+      const forSpotify = playlistSongs.map(song => song.uri);
+      console.log(forSpotify)
     }
 
     const resetPlaylist = () => {
-      const forSpotify = playlistSongs.map(song => song.uri);
       setPlaylistSongs(() => []);
     }    
 
@@ -42,7 +40,6 @@ function Main( {results}) {
             <Playlist 
               playlistSongs={playlistSongs} 
               deletePlaylistSong={deletePlaylistSong} 
-              playlists={playlists}
               addPlaylist={addPlaylist}
               resetPlaylist={resetPlaylist} />
         </div>

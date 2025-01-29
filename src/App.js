@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import SearchBar from './SearchBar/SearchBar.js'
 import Main from './Main/Main.js';
@@ -74,14 +73,18 @@ function App() {
   }
 
   const [results, setResults] = useState([])
-/*
-  const showResults = (term) => {
-    getResults(term).then(result => setResults(result))
-  } */
 
   const showResults = (term) => {
+    if (!term) {
+      setResults(() => [])
+    } else {
+      getResults(term).then(result => setResults(result))
+    }
+  } 
+/*
+  const showResults = (term) => {
     getResults(term).then(setResults);
-  }
+  } */
 
   return (
     <div className="App">
