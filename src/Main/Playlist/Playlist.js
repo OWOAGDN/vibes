@@ -13,8 +13,13 @@ function Playlist( {playlistSongs, deletePlaylistSong, addPlaylist, resetPlaylis
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        resetPlaylist();
-        setPlaylistName(() => '');
+        if(!playlistName) {
+            console.log('Playlist needs a name')
+        } else {
+            addPlaylist(playlistName);
+            setPlaylistName(() => '');
+            resetPlaylist();
+        }
     }
 
 
