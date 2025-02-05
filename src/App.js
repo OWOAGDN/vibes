@@ -93,7 +93,7 @@ function App() {
       </header>
       <SpotifyLogin spotifyLogin={spotifyLogin} token={accessToken} />
       <SearchBar showResults={showResults} />
-      <Main results={results} />
+      <Main results={results} token={accessToken} />
     </div>
   );
 }

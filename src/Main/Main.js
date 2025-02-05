@@ -4,7 +4,7 @@ import DisplayPlaylist from "./DisplayPlaylist";
 import styles from "./Main.module.css"
 import { useState } from 'react';
 
-function Main( {results}) {
+function Main( {results, token}) {
 
     const [playlistSongs, setPlaylistSongs] = useState([]);
     
@@ -23,8 +23,48 @@ function Main( {results}) {
     const addPlaylist = (name) => {
       let playlistName = name;
       console.log(playlistName)
-      const forSpotify = playlistSongs.map(song => song.uri);
-      console.log(forSpotify)
+      const uriArray = playlistSongs.map(song => song.uri);
+      console.log(uriArray)
+      saveToSpotify(uriArray, playlistName)
+    }
+
+    const saveToSpotify =  (uri, playlistName) => {
+      return fetch('https://api.spotify.com/v1/me', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then(response => {
+        return response.json()
+      }).then(jsonResponse => {
+        return jsonResponse.id
+      }).then(userId => {
+        console.log(userId)
+        return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+          method: 'POST',
+          body: JSON.stringify({
+            name: playlistName,
+            description: 'Made from Vibes',
+            public: true
+          })
+        })
+      }).then(response => {
+        return response.json()
+      }).then(jsonResponse => {
+        const userId = jsonResponse.owner.id
+        const playlistId = jsonResponse.id
+        return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+          method: 'POST',
+          body: JSON.stringify({uris: uri})
+        })
+      }).then(response => {
+        console.log(response)
+      })
     }
 
     const resetPlaylist = () => {
