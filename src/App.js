@@ -1,8 +1,9 @@
 import './App.css';
 import SearchBar from './SearchBar/SearchBar.js'
 import Main from './Main/Main.js';
-import SpotifyLogin from './SpotifyLogin.js'
+import SpotifyLogin from './SpotifyLogin/SpotifyLogin.js'
 import { useEffect, useState } from 'react';
+import SpotifyLogo from './Images/Spotify_Primary_Logo_RGB_Green.png'
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
       console.log(params.access_token)
       window.setTimeout(() => {
         setAccessToken(() => '');
+        window.history.pushState({}, null, '/');
       }, params.expires_in *1000);
     }
   }, [accessToken])
@@ -50,7 +52,7 @@ function App() {
   }
 
   const getResults = (term) => {
-    return fetch(`https://api.spotify.com/v1/search?q=${term}&type=track`, {
+    return fetch(`https://api.spotify.com/v1/search?q=${term}+genre:r&b&type=track`, {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
@@ -75,6 +77,9 @@ function App() {
   const [results, setResults] = useState([])
 
   const showResults = (term) => {
+    if (!accessToken) {
+      spotifyLogin();
+    }
     if (!term) {
       setResults(() => [])
     } else {
@@ -89,7 +94,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>R&B Vibes</h1>
+        <div className='Heading'>
+          <h1>R&B Vibes
+            
+          </h1>
+          <div className="Logo">
+            <img src={SpotifyLogo} alt='Spotify Logo'/>
+          </div>
+          <span className='Spotify'>Powered by Spotify</span>
+        </div>
       </header>
       <SpotifyLogin spotifyLogin={spotifyLogin} token={accessToken} />
       <SearchBar showResults={showResults} />
