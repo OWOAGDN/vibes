@@ -1,8 +1,21 @@
-.main {
+.song {
     border: 1px solid black;
-    min-width: 40%;
+    list-style-type: none;
 }
 
-.songs {
+.songContainer {
+    display: flex;
     list-style-type: none;
+}
+
+.songContainer .imageContainer {
+    height: 100px;
+    width: 100px;
+    overflow: hidden;  
+}
+
+.songContainer .imageContainer img {
+    height: auto;
+    max-width: 100%;
+    display: block;
 }

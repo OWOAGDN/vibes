@@ -1,7 +1,7 @@
 import Tracklist from "./Tracklist/Tracklist";
 import Playlist from "./Playlist/Playlist";
 import DisplayPlaylist from "./DisplayPlaylist";
-import styles from "./Main.module.css"
+import styles from "./Main.module.css";
 import { useState } from 'react';
 
 function Main( {results, token}) {

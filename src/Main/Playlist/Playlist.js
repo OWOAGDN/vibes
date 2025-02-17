@@ -1,5 +1,5 @@
 import PlaylistTracks from "./PlaylistTracks";
-import styles from "../Main.module.css"
+import styles from "../Main.module.css";
 import Track from "../Tracklist/Track";
 import { useState } from "react";
 
@@ -24,7 +24,7 @@ function Playlist( {playlistSongs, deletePlaylistSong, addPlaylist, resetPlaylis
 
 
     return (
-        <div className={styles.playlist}>
+        <div className={styles.resultBox}>
             <div>
                 <h1>Create Playlist</h1>
             </div>

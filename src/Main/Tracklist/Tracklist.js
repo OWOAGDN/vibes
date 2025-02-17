@@ -1,9 +1,9 @@
-import styles from './Tracklist.module.css'
-import Track from './Track'
+import Track from './Track';
+import styles from "../Main.module.css";
 
 function Tracklist( {tracks, addPlaylistSongs} ) {
     return (
-        <div className={styles.main}>
+        <div className={styles.resultBox}>
             <h1>Results</h1>
             <ul className={styles.songs} >
             {tracks.map(track => (
