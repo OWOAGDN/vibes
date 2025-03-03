@@ -1,21 +1,44 @@
 .song {
     border: 1px solid black;
     list-style-type: none;
+    margin: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .8rem;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 .songContainer {
-    display: flex;
     list-style-type: none;
+    font-size: .8rem;
+    line-height: .9rem;
+    width: 60%;
+    max-height: 20vh;
 }
 
-.songContainer .imageContainer {
+.songContainer p {
+    margin: .2rem;
+}
+
+.songContainer .trackName {
+    font-weight: bold;
+}
+
+.song .imageContainer {
     height: 100px;
     width: 100px;
-    overflow: hidden;  
+    overflow: hidden;
+     
 }
 
-.songContainer .imageContainer img {
+.song .imageContainer img {
     height: auto;
     max-width: 100%;
     display: block;
+}
+
+.song .buttonContainer {
+    padding-left: .5rem;
 }
